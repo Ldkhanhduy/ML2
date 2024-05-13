@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
+from sklearn.metrics import silhouette_score, davies_bouldin_score
 
 data = pd.read_csv('D:/data/k_means.csv', index_col=None)
 data = data[['Average salary per month (USD)', 'Average working hours']]
@@ -33,3 +34,6 @@ plt.ylabel('Average working hours per day', fontweight = 'bold')
 plt.title('Scatter plot about working hours and salary each country', size = 20, fontweight='bold')
 plt.legend()
 plt.show()
+
+print(f"Silhouette score: {silhouette_score(data, model.labels_)}")
+print(f"Davies Bouldin score: {davies_bouldin_score(data, model.labels_)}")

@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from sklearn.metrics import silhouette_score, davies_bouldin_score
 
 class Kmeans:
     def __init__(self, k, random_state=2024):
@@ -72,6 +73,8 @@ if __name__ == '__main__':
     centroid = np.array(model.centroid)
     # plt.scatter(data['Average salary per month (USD)'], data['Average working hours'],
     #             c=model.label_mark)
+    print(f"Silhouette score: {silhouette_score(data, model.label_mark)}")
+    print(f"Davies Bouldin score: {davies_bouldin_score(data, model.label_mark)}")
 
     cluster_data1 = data.values[[model.label_mark[i] == 0 for i in range(data.shape[0])]]
     plt.scatter(cluster_data1[:,0], cluster_data1[:,1],
