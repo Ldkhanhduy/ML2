@@ -15,6 +15,7 @@ for i in range(1, 11):
 
 # Vẽ biểu đồ elbow
 plt.plot(range(1, 11), wcss, marker='*', c='red', label='Elbow line')
+plt.axvline(x=3, color='b', linestyle='--', label='x = 3')
 plt.grid(True)
 plt.title('Phương pháp Elbow', size=20, fontweight='bold')
 plt.xlabel('Số cụm')

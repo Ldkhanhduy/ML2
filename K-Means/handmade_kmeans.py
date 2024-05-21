@@ -42,10 +42,11 @@ class Kmeans:
 
     # Tính hàm mục tiêu
     def sse(self, x, label):
+        self.SSE = 0
         for i in range(x.shape[0]):
             sse_one = 0
             for j in range(self.k):
-                each_data = label[i][j] * np.linalg.norm(x.values[i] - self.centroid[j])
+                each_data = label[i][j] * np.linalg.norm(x.values[i] - self.centroid[j])**2
                 sse_one += each_data
             self.SSE += sse_one
         return self.SSE
